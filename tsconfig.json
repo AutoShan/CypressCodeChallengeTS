@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "../node_modules",
     "target": "es5",
     "lib": ["es5", "dom"],
     "types": ["cypress", "node"],
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts","**/*.json"]
 }

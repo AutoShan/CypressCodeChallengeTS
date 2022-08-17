@@ -1,3 +1,4 @@
 {
-  "username": "Delphine"
+  "username": "Delphine",
+  "urlGetUsers": "/users"
 }
