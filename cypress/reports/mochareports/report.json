@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-18T10:57:20.226Z",
+    "end": "2022-08-18T10:57:21.570Z",
+    "duration": 1184,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b8e832b7-9aeb-4c20-9a3c-c3f1be9fbd8d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\validateEmailFormat.cy.ts",
+      "file": "cypress\\e2e\\validateEmailFormat.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a244d174-402f-46a9-a556-713fca8cfdfe",
+          "title": "validateEmailFormat.cy",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate Email Address Format",
+              "fullTitle": "validateEmailFormat.cy Validate Email Address Format",
+              "timedOut": null,
+              "duration": 1184,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Call getuserIdByUsername command to get the userId of specific user (Delphine)\ncy.getuserIdByUsername(dataSource_json_1.default.username).then(function (returnedUserId) {\n    cy.log(dataSource_json_1.default.username + \" userId is \" + returnedUserId);\n    //Call getPostByUserId command to get the posts made by the specific userId\n    cy.getPostByUserId(dataSource_json_1.default.urlPostByUser, returnedUserId).then(function (returnedPostByUserId) {\n        var posts = returnedPostByUserId;\n        //Iterate on each post\n        posts.forEach(function (element) {\n            cy.request({\n                method: \"GET\",\n                url: dataSource_json_1.default.urlCommentsByPostId + element.id,\n            }).then(function (res) {\n                expect(res.status).to.eq(200);\n                expect(res.body).to.not.be.null;\n                expect(res.body[0].postId).to.eq(element.id);\n                var arrComments = res.body;\n                //Iterate in the posted comments to validate each emails\n                for (var index in arrComments) {\n                    cy.validateEmailFormat(arrComments[index].email).then(function (bResult) {\n                        cy.log('Email address is valid: ' + arrComments[index].email);\n                        expect(bResult).to.eq(true);\n                    });\n                }\n            });\n        });\n    });\n});",
+              "err": {},
+              "uuid": "4743d454-388c-43ea-9a46-ac04000bd945",
+              "parentUUID": "a244d174-402f-46a9-a556-713fca8cfdfe",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4743d454-388c-43ea-9a46-ac04000bd945"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1184,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
