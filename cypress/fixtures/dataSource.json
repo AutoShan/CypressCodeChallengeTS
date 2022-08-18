@@ -1,4 +1,5 @@
 {
   "username": "Delphine",
-  "urlPostByUser": "/posts?userId="
+  "urlPostByUser": "/posts?userId=",
+  "urlCommentsByPostId": "/comments?postId="
 }
