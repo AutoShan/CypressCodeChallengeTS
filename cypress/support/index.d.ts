@@ -1,5 +1,6 @@
 declare namespace Cypress {
     interface Chainable {
-        getuserIdBuUsername(username: string): Chainable<any>;
+        getuserIdByUsername(username: string): Chainable<any>;
+        findPostByUserId(url: string, userId: number): Chainable<any>;
     }
   }

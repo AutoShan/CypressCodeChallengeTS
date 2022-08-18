@@ -1,4 +1,4 @@
 {
   "username": "Delphine",
-  "urlGetUsers": "/users"
+  "urlPostByUser": "/posts?userId="
 }
